@@ -3,10 +3,10 @@ import "./CategoriesAndFilter.css";
 import Categories from "../Categories/Categories.component";
 import Filter from "../Filter/Filter.component";
 
-const CategoriesandFilter = () => {
+const CategoriesandFilter = ({ handleCategoryChange }) => {
   return (
     <div className="CategoriesAndFilter">
-      <Categories />
+      <Categories handleCategoryChange={handleCategoryChange} />
       <Filter />
     </div>
   );

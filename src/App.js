@@ -11,25 +11,50 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: BOOK_DATA,
+      books: [],
       userInput: "",
     };
+  }
+  componentDidMount() {
+    this.setState({
+      books: BOOK_DATA,
+    });
   }
   handleInputChange = (event) => {
     this.setState({
       userInput: event.target.value,
     });
   };
+  handleCategoryChange = (event) => {
+    console.log(event.target.value.toLowerCase());
+    // const books = [...this.state.books];
+    if (event.target.value === "All") {
+      this.setState({
+        books: BOOK_DATA,
+      });
+    } else {
+      const categorizedBooks = BOOK_DATA.filter((book) => {
+        return book.category === event.target.value.toLowerCase();
+      });
+      //Problem here
+      this.setState({
+        books: categorizedBooks,
+      });
+    }
+  };
   render() {
     const { books, userInput } = this.state;
-    const searchedBook = books.products.filter((book) => {
+    //This one is for searching books
+    const searchedBook = books.filter((book) => {
       return book.name.toLowerCase().includes(userInput);
     });
     return (
       <div className="App">
         <Header />
         <SearchBox change={(event) => this.handleInputChange(event)} />
-        <CategoriesandFilter />
+        <CategoriesandFilter
+          handleCategoryChange={(event) => this.handleCategoryChange(event)}
+        />
         <ShopTitle />
         <BooksComponent books={searchedBook} />
       </div>

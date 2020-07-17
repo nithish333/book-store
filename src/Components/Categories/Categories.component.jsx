@@ -5,7 +5,7 @@ const Categories = ({ handleCategoryChange }) => {
     <div className="Categories">
       <label>Categories : </label>
       <select className="selectCategory" onChange={handleCategoryChange}>
-        <option className="categoryName">Select</option>
+        <option className="categoryName">All</option>
         <option className="categoryName">Business</option>
         <option className="categoryName">Cookbooks</option>
         <option className="categoryName">Mystery</option>
