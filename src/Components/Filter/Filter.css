@@ -1,0 +1,10 @@
+.filter {
+  font-size: 15px;
+  outline: none;
+}
+option {
+  padding: 5px;
+}
+label {
+  font-size: 17px;
+}

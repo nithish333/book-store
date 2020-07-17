@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins&display=swap");
+.Header {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 20px;
+  border-bottom: 1px solid #000;
+}
+.storetitle {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 3px;
+}
