@@ -42,6 +42,26 @@ class App extends React.Component {
       });
     }
   };
+
+  handleFilterChange = (event) => {
+    console.log(event.target.value);
+    // const books = [...this.state.books];
+    if (event.target.value === "Lowest to Highest") {
+      const ascendingPrice = BOOK_DATA.sort((a, b) => {
+        return a.price - b.price;
+      });
+      this.setState({
+        books: ascendingPrice,
+      });
+    } else if (event.target.value === "Highest to Lowest") {
+      const descendingPrice = BOOK_DATA.sort((a, b) => {
+        return b.price - a.price;
+      });
+      this.setState({
+        books: descendingPrice,
+      });
+    }
+  };
   render() {
     const { books, userInput } = this.state;
     //This one is for searching books
@@ -54,6 +74,7 @@ class App extends React.Component {
         <SearchBox change={(event) => this.handleInputChange(event)} />
         <CategoriesandFilter
           handleCategoryChange={(event) => this.handleCategoryChange(event)}
+          handleFilterChange={(event) => this.handleFilterChange(event)}
         />
         <ShopTitle />
         <BooksComponent books={searchedBook} />

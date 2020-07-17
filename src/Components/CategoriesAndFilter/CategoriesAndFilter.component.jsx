@@ -3,11 +3,11 @@ import "./CategoriesAndFilter.css";
 import Categories from "../Categories/Categories.component";
 import Filter from "../Filter/Filter.component";
 
-const CategoriesandFilter = ({ handleCategoryChange }) => {
+const CategoriesandFilter = ({ handleCategoryChange, handleFilterChange }) => {
   return (
     <div className="CategoriesAndFilter">
       <Categories handleCategoryChange={handleCategoryChange} />
-      <Filter />
+      <Filter handleFilterChange={handleFilterChange} />
     </div>
   );
 };
