@@ -24,6 +24,42 @@
   font-size: 30px;
   width: 70%;
   margin: 30px auto;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 2px solid #f4f5f7;
   letter-spacing: 3px;
+}
+.orClass {
+  width: 70%;
+  text-align: center;
+  margin: 10px auto;
+  position: relative;
+}
+.orClass::before {
+  content: "";
+  width: 45%;
+  height: 2px;
+  background-color: #f4f5f7;
+  position: absolute;
+  left: 0;
+  top: 50%;
+}
+.orClass::after {
+  content: "";
+  width: 45%;
+  height: 2px;
+  background-color: #f4f5f7;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+.googleConnect {
+  width: 50%;
+  margin: auto;
+}
+.googleButton {
+  width: 100%;
+  font-size: larger;
+  background-color: #4285f4;
+}
+.googleButton:hover {
+  background-color: #357ae8;
 }

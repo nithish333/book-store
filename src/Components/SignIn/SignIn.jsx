@@ -2,6 +2,7 @@ import React from "react";
 import "./SignIn.css";
 import FormInput from "../FormInput/FormInput";
 import { Link } from "react-router-dom";
+// import { FaGoogle } from "react-icons/fa";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -58,6 +59,12 @@ class SignIn extends React.Component {
             </Link>
           </div>
         </form>
+        <div className="orClass">
+          <p className="or">or</p>
+        </div>
+        <div className="googleConnect">
+          <button className="googleButton">Sign in with Google</button>
+        </div>
       </div>
     );
   }
