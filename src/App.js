@@ -6,6 +6,7 @@ import CategoriesandFilter from "./Components/CategoriesAndFilter/CategoriesAndF
 import ShopTitle from "./Components/Title/ShopTitle";
 import BooksComponent from "./Components/BooksComponent/Books.component";
 import BOOK_DATA from "./Components/BooksComponent/BooksData";
+import Contact from "./Components/ContactFooter/Contact.component";
 
 class App extends React.Component {
   constructor(props) {
@@ -100,6 +101,7 @@ class App extends React.Component {
         />
         <ShopTitle />
         <BooksComponent books={searchedBook} />
+        <Contact />
       </div>
     );
   }

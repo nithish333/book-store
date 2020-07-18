@@ -1,0 +1,20 @@
+.Contact {
+  padding-top: 80px;
+}
+.contactTitle {
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  width: 30%;
+  margin: auto;
+}
+.contact {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 50px;
+}
+.icons {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
