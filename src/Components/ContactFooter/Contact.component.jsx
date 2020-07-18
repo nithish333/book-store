@@ -19,7 +19,7 @@ const Contact = () => {
             style={{
               margin: "10px",
             }}
-            class="icons"
+            className="icons"
           >
             <FaFacebook size={32} />
             <FaTwitter size={32} />

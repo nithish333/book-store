@@ -1,0 +1,12 @@
+.FormInput {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+input {
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+}
+input:focus {
+  border: 1px solid #121212;
+}
