@@ -45,21 +45,43 @@ class App extends React.Component {
 
   handleFilterChange = (event) => {
     console.log(event.target.value);
-    // const books = [...this.state.books];
-    if (event.target.value === "Lowest to Highest") {
-      const ascendingPrice = BOOK_DATA.sort((a, b) => {
-        return a.price - b.price;
-      });
-      this.setState({
-        books: ascendingPrice,
-      });
-    } else if (event.target.value === "Highest to Lowest") {
-      const descendingPrice = BOOK_DATA.sort((a, b) => {
-        return b.price - a.price;
-      });
-      this.setState({
-        books: descendingPrice,
-      });
+    const books = [...this.state.books];
+    // if (event.target.value === "Lowest to Highest") {
+    //   const ascendingPrice = BOOK_DATA.sort((a, b) => {
+    //     return a.price - b.price;
+    //   });
+    //   this.setState({
+    //     books: ascendingPrice,
+    //   });
+    // } else if (event.target.value === "Highest to Lowest") {
+    //   const descendingPrice = BOOK_DATA.sort((a, b) => {
+    //     return b.price - a.price;
+    //   });
+    //   this.setState({
+    //     books: descendingPrice,
+    //   });
+    // }
+    switch (event.target.value) {
+      case "Lowest to Highest":
+        const ascendingPrice = books.sort((a, b) => {
+          return a.price - b.price;
+        });
+        this.setState({
+          books: ascendingPrice,
+        });
+        break;
+      case "Highest to Lowest":
+        const descendingPrice = books.sort((a, b) => {
+          return b.price - a.price;
+        });
+        this.setState({
+          books: descendingPrice,
+        });
+        break;
+      default:
+        this.setState({
+          books: BOOK_DATA,
+        });
     }
   };
   render() {
