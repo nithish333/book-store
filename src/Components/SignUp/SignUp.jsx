@@ -1,6 +1,7 @@
 import React from "react";
 import "./SignUp.css";
 import FormInput from "../FormInput/FormInput";
+import { auth, createUserProfileDocument } from "../../Firebase/FIrebase.util";
 // import { auth, createUserProfileDocument } from "../../Firebase/Firebase.util";
 
 class SignUp extends React.Component {
@@ -13,49 +14,70 @@ class SignUp extends React.Component {
       confirmPassword: "",
     };
   }
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
-    this.setState({
-      email: "",
-      password: "",
-    });
+    const { displayName, email, password, confirmPassword } = this.state;
+    if (password !== confirmPassword) {
+      alert("Password should be same");
+      return;
+    }
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      await createUserProfileDocument(user, { displayName });
+      console.log(displayName);
+      this.setState({
+        displayName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+    } catch (err) {
+      console.log("Error creating user" + err);
+    }
   };
-  handleChange = (event) => {};
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
   render() {
+    const { displayName, email, password, confirmPassword } = this.state;
     return (
       <div className="SignUp">
         <h2 className="signUpTitle">Create a new account</h2>
         <form className="signUpForm" onSubmit={this.handleSubmit}>
           <FormInput
-            label="Display Name"
-            value={this.state.displayName}
             type="text"
-            name="displayname"
-            onChange={this.handleChange}
+            name="displayName"
+            value={displayName}
+            handleChange={this.handleChange}
+            label="Display Name"
             required
           />
           <FormInput
-            label="Email"
-            value={this.state.email}
             type="text"
             name="email"
-            onChange={this.handleChange}
+            value={email}
+            handleChange={this.handleChange}
+            label="Email"
             required
           />
           <FormInput
-            label="Password"
-            value={this.state.password}
             type="password"
             name="password"
-            onChange={this.handleChange}
+            value={password}
+            handleChange={this.handleChange}
+            label="Password"
             required
           />
           <FormInput
-            label="Confirm password"
-            value={this.state.confirmPassword}
             type="password"
-            name="confirmpassword"
-            onChange={this.handleChange}
+            name="confirmPassword"
+            value={confirmPassword}
+            handleChange={this.handleChange}
+            label="Confirm password"
             required
           />
           <button className="signUpButton">Sign Up</button>

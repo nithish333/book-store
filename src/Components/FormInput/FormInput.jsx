@@ -1,13 +1,13 @@
 import React from "react";
 import "./FormInput.css";
 
-const FormInput = ({ label, type, handleChange }) => {
+const FormInput = ({ label, handleChange, ...otherProps }) => {
   return (
     <div className="FormInput">
       <label className="email" onChange={handleChange}>
         {label}
       </label>
-      <input type={type} className="inputBox" onChange={handleChange} />
+      <input className="inputBox" onChange={handleChange} {...otherProps} />
     </div>
   );
 };
