@@ -6,7 +6,7 @@ import SignIn from "./Components/SignIn/SignIn";
 import { Route, Switch } from "react-router-dom";
 import HomePage from "./Components/Homepage/HomePage";
 import SignUp from "./Components/SignUp/SignUp";
-import { auth } from "./Firebase/FIrebase.util";
+import { auth, createUserProfileDocument } from "./Firebase/FIrebase.util";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -17,10 +17,7 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
   componentDidMount() {
     this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
-      this.setState({
-        currentUser: user,
-      });
-      console.log(user);
+      createUserProfileDocument(user);
     });
   }
 
