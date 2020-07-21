@@ -3,7 +3,7 @@ import "./SignIn.css";
 import FormInput from "../FormInput/FormInput";
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
-import { signInWithGoogle } from "../../Firebase/FIrebase.util";
+import { signInWithGoogle, auth } from "../../Firebase/FIrebase.util";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -13,14 +13,24 @@ class SignIn extends React.Component {
       password: "",
     };
   }
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
-    this.setState({
-      email: "",
-      password: "",
-    });
+    const { email, password } = this.state;
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+
+      this.setState({
+        email: "",
+        password: "",
+      });
+    } catch (err) {
+      console.log("Please check your details");
+    }
   };
-  handleSignInChange = (event) => {};
+  handleSignInChange = (event) => {
+    const { value, name } = event.target;
+    this.setState({ [name]: value });
+  };
   render() {
     return (
       <div className="SignIn">
