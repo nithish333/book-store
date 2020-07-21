@@ -16,3 +16,10 @@
   outline: none;
   border: none;
 }
+.signOutLink {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 7px 10px;
+  background-color: #fafafa;
+  cursor: pointer;
+}

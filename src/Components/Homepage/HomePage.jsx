@@ -5,25 +5,26 @@ import CategoriesandFilter from "../CategoriesAndFilter/CategoriesAndFilter.comp
 import ShopTitle from "../Title/ShopTitle";
 import BooksComponent from "../BooksComponent/Books.component";
 import BOOK_DATA from "../BooksComponent/BooksData";
-// import SignIn from "../SignIn/SignIn";
+
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: [],
+      books: BOOK_DATA,
       userInput: "",
     };
   }
-  componentDidMount() {
-    this.setState({
-      books: BOOK_DATA,
-    });
-  }
+
+  //? Handling input change
+
   handleInputChange = (event) => {
     this.setState({
       userInput: event.target.value,
     });
   };
+
+  //? Handling category change
+
   handleCategoryChange = (event) => {
     if (event.target.value === "All") {
       this.setState({
@@ -39,6 +40,8 @@ class HomePage extends React.Component {
       });
     }
   };
+
+  //? Handling filter change
 
   handleFilterChange = (event) => {
     console.log(event.target.value);

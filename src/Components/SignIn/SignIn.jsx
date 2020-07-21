@@ -2,7 +2,8 @@ import React from "react";
 import "./SignIn.css";
 import FormInput from "../FormInput/FormInput";
 import { Link } from "react-router-dom";
-// import { FaGoogle } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
+import { signInWithGoogle } from "../../Firebase/FIrebase.util";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -12,6 +13,14 @@ class SignIn extends React.Component {
       password: "",
     };
   }
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.setState({
+      email: "",
+      password: "",
+    });
+  };
+  handleSignInChange = (event) => {};
   render() {
     return (
       <div className="SignIn">
@@ -21,6 +30,7 @@ class SignIn extends React.Component {
             label="Email"
             type="text"
             value={this.state.email}
+            handleChange={this.handleSignInChange}
             name="email"
             required
           />
@@ -28,6 +38,7 @@ class SignIn extends React.Component {
             label="Password"
             type="password"
             value={this.state.password}
+            handleChange={this.handleSignInChange}
             name="password"
             required
           />
@@ -58,13 +69,16 @@ class SignIn extends React.Component {
               I don't have an account . Create one
             </Link>
           </div>
+          <div className="orClass">
+            <p className="or">or</p>
+          </div>
+          <div className="googleConnect">
+            <button className="googleButton" onClick={signInWithGoogle}>
+              <FaGoogle className="googleIcon" />
+              Sign in with Google
+            </button>
+          </div>
         </form>
-        <div className="orClass">
-          <p className="or">or</p>
-        </div>
-        <div className="googleConnect">
-          <button className="googleButton">Sign in with Google</button>
-        </div>
       </div>
     );
   }

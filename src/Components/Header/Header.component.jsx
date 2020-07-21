@@ -2,7 +2,8 @@ import React from "react";
 import "./Header.styles.css";
 import CustomButtom from "../CustomButton/CustomButton";
 import { Link } from "react-router-dom";
-const Header = () => {
+import { auth } from "../../Firebase/FIrebase.util";
+const Header = ({ currentUser }) => {
   return (
     <div className="Header">
       <div className="Logo">
@@ -15,9 +16,15 @@ const Header = () => {
         </Link>
       </div>
       <div className="navLinks">
-        <Link className="signinLink" to="/signin">
-          <CustomButtom name="Sign In" />
-        </Link>
+        {currentUser ? (
+          <div className="signOutLink" onClick={() => auth.signOut()}>
+            Sign Out
+          </div>
+        ) : (
+          <Link className="signinLink" to="/signin">
+            <CustomButtom name="Sign In" />
+          </Link>
+        )}
       </div>
     </div>
   );
