@@ -5,6 +5,7 @@ import CategoriesandFilter from "../CategoriesAndFilter/CategoriesAndFilter.comp
 import ShopTitle from "../Title/ShopTitle";
 import BooksComponent from "../BooksComponent/Books.component";
 import BOOK_DATA from "../BooksComponent/BooksData";
+// import { connect } from "react-redux";
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -90,4 +91,7 @@ class HomePage extends React.Component {
   }
 }
 
+// const mapStateToProps = (state) => ({
+//   BOOK_DATA: state.books.BOOK_DATA,
+// });
 export default HomePage;

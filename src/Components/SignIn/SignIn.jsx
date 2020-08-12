@@ -76,7 +76,7 @@ class SignIn extends React.Component {
                 letterSpacing: "1px",
               }}
             >
-              I don't have an account . Create one
+              Don't have an account . Create one
             </Link>
           </div>
           <div className="orClass">
