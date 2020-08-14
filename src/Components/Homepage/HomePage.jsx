@@ -29,8 +29,9 @@ const HomePage = ({
   // //? Handling category change
 
   const handleCategory = (event) => {
+    // const categoryBooks = [...BOOK_DATA];
     if (event.target.value === "All") {
-      setCategory(BOOK_DATA);
+      setCategory(books);
     } else {
       const categorizedBooks = books.filter((book) => {
         return book.category.includes(event.target.value.toLowerCase());
@@ -45,22 +46,19 @@ const HomePage = ({
   const handleFilter = (event) => {
     console.log(event.target.value);
     // const books = [...this.state.books];
-
-    switch (event.target.value) {
-      case "Lowest to Highest":
-        const ascendingPrice = BOOK_DATA.sort((a, b) => {
-          return a.price - b.price;
-        });
-        setFilter(ascendingPrice);
-        break;
-      case "Highest to Lowest":
-        const descendingPrice = BOOK_DATA.sort((a, b) => {
-          return b.price - a.price;
-        });
-        setFilter(descendingPrice);
-        break;
-      default:
-        setFilter(BOOK_DATA);
+    const filterBooks = [...BOOK_DATA];
+    if (event.target.value === "Lowest to Highest") {
+      const ascendingPrice = filterBooks.sort((a, b) => {
+        return a.price - b.price;
+      });
+      setFilter(ascendingPrice);
+    } else if (event.target.value === "Highest to Lowest") {
+      const descendingPrice = filterBooks.sort((a, b) => {
+        return b.price - a.price;
+      });
+      setFilter(descendingPrice);
+    } else {
+      setFilter(filterBooks);
     }
   };
   //This one is for searching books
