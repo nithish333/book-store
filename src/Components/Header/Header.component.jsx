@@ -3,6 +3,9 @@ import "./Header.styles.css";
 import CustomButtom from "../CustomButton/CustomButton";
 import { Link } from "react-router-dom";
 import { auth } from "../../Firebase/FIrebase.util";
+import { ReactComponent as CartIcon } from "../../assets/shoppingcart.svg";
+// import { ReactSVG } from "react-svg";
+
 const Header = ({ currentUser }) => {
   return (
     <div className="Header">
@@ -17,8 +20,17 @@ const Header = ({ currentUser }) => {
       </div>
       <div className="navLinks">
         {currentUser ? (
-          <div className="signOutLink" onClick={() => auth.signOut()}>
-            Sign Out
+          <div className="onLogin">
+            <div className="signOutLink" onClick={() => auth.signOut()}>
+              Sign Out
+            </div>
+            <div className="cart">
+              <CartIcon className="cartIcon" />
+              <span className="itemCount">0</span>
+            </div>
+            <Link className="profile" to="/profile">
+              Profile
+            </Link>
           </div>
         ) : (
           <Link className="signinLink" to="/signin">

@@ -23,3 +23,33 @@
   background-color: #fafafa;
   cursor: pointer;
 }
+.onLogin {
+  display: flex;
+  align-items: center;
+}
+.cart {
+  margin-left: 50px;
+  width: 45px;
+  height: 45px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.cartIcon {
+  width: 24px;
+  height: 24px;
+}
+.itemCount {
+  position: absolute;
+  font-size: 10px;
+  font-weight: bold;
+  bottom: 12px;
+}
+.profile {
+  margin-left: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+}
