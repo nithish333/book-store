@@ -4,76 +4,75 @@ import SearchBox from "../SearchBox/SearchBox.component";
 import CategoriesandFilter from "../CategoriesAndFilter/CategoriesAndFilter.component";
 import ShopTitle from "../Title/ShopTitle";
 import BooksComponent from "../BooksComponent/Books.component";
-// import BOOK_DATA from "../BooksComponent/BooksData";
+import books from "../BooksComponent/BooksData";
 import { connect } from "react-redux";
-import { handleInputChange } from "../../redux/shopData/shopActions";
+import {
+  handleInputChange,
+  handleCategoryChange,
+  handleFilterChange,
+} from "../../redux/shopData/shopActions";
 
-const HomePage = ({ BOOK_DATA, userInput }) => {
+const HomePage = ({
+  BOOK_DATA,
+  userInput,
+  setInputChange,
+  setCategory,
+  setFilter,
+}) => {
+  // const books = [...BOOK_DATA];
   // //? Handling input change
 
-  // handleInputChange = (event) => {
-  //   this.setState({
-  //     userInput: event.target.value,
-  //   });
-  // };
+  const handleChange = (event) => {
+    setInputChange(event.target.value);
+  };
 
   // //? Handling category change
 
-  // handleCategoryChange = (event) => {
-  //   if (event.target.value === "All") {
-  //     this.setState({
-  //       books: BOOK_DATA,
-  //     });
-  //   } else {
-  //     const categorizedBooks = BOOK_DATA.filter((book) => {
-  //       return book.category === event.target.value.toLowerCase();
-  //     });
-  //     //Problem here
-  //     this.setState({
-  //       books: categorizedBooks,
-  //     });
-  //   }
-  // };
+  const handleCategory = (event) => {
+    if (event.target.value === "All") {
+      setCategory(BOOK_DATA);
+    } else {
+      const categorizedBooks = books.filter((book) => {
+        return book.category.includes(event.target.value.toLowerCase());
+      });
+      //Problem here
+      setCategory(categorizedBooks);
+    }
+  };
 
   // //? Handling filter change
 
-  // handleFilterChange = (event) => {
-  //   console.log(event.target.value);
-  //   const books = [...this.state.books];
+  const handleFilter = (event) => {
+    console.log(event.target.value);
+    // const books = [...this.state.books];
 
-  //   switch (event.target.value) {
-  //     case "Lowest to Highest":
-  //       const ascendingPrice = books.sort((a, b) => {
-  //         return a.price - b.price;
-  //       });
-  //       this.setState({
-  //         books: ascendingPrice,
-  //       });
-  //       break;
-  //     case "Highest to Lowest":
-  //       const descendingPrice = books.sort((a, b) => {
-  //         return b.price - a.price;
-  //       });
-  //       this.setState({
-  //         books: descendingPrice,
-  //       });
-  //       break;
-  //     default:
-  //       this.setState({
-  //         books: BOOK_DATA,
-  //       });
-  //   }
-  // };
+    switch (event.target.value) {
+      case "Lowest to Highest":
+        const ascendingPrice = BOOK_DATA.sort((a, b) => {
+          return a.price - b.price;
+        });
+        setFilter(ascendingPrice);
+        break;
+      case "Highest to Lowest":
+        const descendingPrice = BOOK_DATA.sort((a, b) => {
+          return b.price - a.price;
+        });
+        setFilter(descendingPrice);
+        break;
+      default:
+        setFilter(BOOK_DATA);
+    }
+  };
   //This one is for searching books
   const searchedBook = BOOK_DATA.filter((book) => {
     return book.name.toLowerCase().includes(userInput);
   });
   return (
     <div className="HomePage">
-      <SearchBox change={(event) => this.handleInputChange(event)} />
+      <SearchBox change={(event) => handleChange(event)} />
       <CategoriesandFilter
-        handleCategoryChange={(event) => this.handleCategoryChange(event)}
-        handleFilterChange={(event) => this.handleFilterChange(event)}
+        handleCategoryChange={(event) => handleCategory(event)}
+        handleFilterChange={(event) => handleFilter(event)}
       />
       <ShopTitle />
       <BooksComponent books={searchedBook} />
@@ -86,7 +85,10 @@ const mapStateToProps = ({ shop }) => ({
   userInput: shop.userInput,
 });
 const mapDispatchToProps = (dispatch) => ({
-  handleInputChange: (input) => dispatch(handleInputChange(input)),
+  setInputChange: (input) => dispatch(handleInputChange(input)),
+  setCategory: (categoryChange) =>
+    dispatch(handleCategoryChange(categoryChange)),
+  setFilter: (filterChange) => dispatch(handleFilterChange(filterChange)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

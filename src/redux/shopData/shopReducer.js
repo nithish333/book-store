@@ -12,6 +12,16 @@ const ShopReducer = (state = INITIAL_STATE, action) => {
         ...state,
         userInput: action.payload,
       };
+    case SHOP_ACTION_TYPES.HANDLE_CATEGORY_CHANGE:
+      return {
+        ...state,
+        BOOK_DATA: action.payload,
+      };
+    case SHOP_ACTION_TYPES.HANDLE_FILTER_CHANGE:
+      return {
+        ...state,
+        BOOK_DATA: action.payload,
+      };
     default:
       return state;
   }
