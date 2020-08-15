@@ -6,16 +6,7 @@ const BooksComponent = ({ books }) => {
   return (
     <div className="Books">
       {books.map((Book) => {
-        return (
-          <BookComponent
-            name={Book.name}
-            key={Book.id}
-            price={Book.price}
-            author={Book.author}
-            category={Book.category}
-            image={Book.img}
-          />
-        );
+        return <BookComponent book={Book} key={Book.id} />;
       })}
     </div>
   );

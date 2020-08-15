@@ -9,6 +9,7 @@ import SignUp from "./Components/SignUp/SignUp";
 import { auth, createUserProfileDocument } from "./Firebase/FIrebase.util";
 import { connect } from "react-redux";
 import setCurrentUser from "./redux/user/userActions";
+import Cart from "./Components/CartComponent/CartComponent";
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -41,6 +42,7 @@ class App extends React.Component {
           <Route exact path="/" component={HomePage} />
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
+          <Route exact path="/cart" component={Cart} />
         </Switch>
         <Contact />
       </div>

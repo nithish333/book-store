@@ -4,9 +4,11 @@ import CustomButtom from "../CustomButton/CustomButton";
 import { Link } from "react-router-dom";
 import { auth } from "../../Firebase/FIrebase.util";
 import { ReactComponent as CartIcon } from "../../assets/shoppingcart.svg";
+import { withRouter } from "react-router-dom";
 // import { ReactSVG } from "react-svg";
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, history }) => {
+  // console.log(history);
   return (
     <div className="Header">
       <div className="Logo">
@@ -25,7 +27,10 @@ const Header = ({ currentUser }) => {
               Sign Out
             </div>
             <div className="cart">
-              <CartIcon className="cartIcon" />
+              <CartIcon
+                className="cartIcon"
+                onClick={() => history.push("/cart")}
+              />
               <span className="itemCount">0</span>
             </div>
             <Link className="profile" to="/profile">
@@ -42,4 +47,4 @@ const Header = ({ currentUser }) => {
   );
 };
 
-export default Header;
+export default withRouter(Header);
