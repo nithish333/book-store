@@ -60,3 +60,6 @@
   background-color: red;
   width: 70px;
 }
+.removeCartItem:hover {
+  background-color: rgba(255, 0, 0, 0.7);
+}

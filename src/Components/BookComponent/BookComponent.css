@@ -33,3 +33,20 @@ img {
   width: 50%;
   font-size: 16px;
 }
+.linkOnRedirect {
+  color: #fff;
+  background-color: #00ca99;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-left: 20px;
+  position: absolute;
+  bottom: 10px;
+}
+.linkOnRedirect:hover {
+  background-color: #0d6051;
+}

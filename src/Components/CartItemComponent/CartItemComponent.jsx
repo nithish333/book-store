@@ -58,7 +58,7 @@ const CartItem = ({
     </div>
   );
 };
-
+//Nithish
 const mapDispatchToProps = (dispatch) => ({
   addItemToCart: (item) => dispatch(addItemToCart(item)),
   removeItemFromCart: (item) => dispatch(removeItemFromCart(item)),
