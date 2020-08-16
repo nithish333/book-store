@@ -4,3 +4,8 @@ export const addItemToCart = (item) => ({
   type: CART_ACTION_TYPES.ADD_ITEMS_TO_CART,
   payload: item,
 });
+
+export const removeItemFromCart = (item) => ({
+  type: CART_ACTION_TYPES.REMOVE_ITEMS_FROM_CART,
+  payload: item,
+});

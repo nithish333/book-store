@@ -1,9 +1,12 @@
 import React from "react";
 import "./CartItemComponent.styles.css";
 import { connect } from "react-redux";
-import { addItemToCart } from "../../redux/cart/cartActions";
+import {
+  addItemToCart,
+  removeItemFromCart,
+} from "../../redux/cart/cartActions";
 
-const CartItem = ({ cartItem, addItemToCart }) => {
+const CartItem = ({ cartItem, addItemToCart, removeItemFromCart }) => {
   const { img, name, price, author, quantity } = cartItem;
   return (
     <div className="CartItem">
@@ -24,7 +27,12 @@ const CartItem = ({ cartItem, addItemToCart }) => {
                 +
               </div>
               <span>{quantity}</span>
-              <div className="quantitySign">-</div>
+              <div
+                className="quantitySign"
+                onClick={() => removeItemFromCart(cartItem)}
+              >
+                -
+              </div>
             </span>
           </div>
           <p className="cartBookPrice">&#36; {(quantity * price).toFixed(2)}</p>
@@ -36,5 +44,6 @@ const CartItem = ({ cartItem, addItemToCart }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   addItemToCart: (item) => dispatch(addItemToCart(item)),
+  removeItemFromCart: (item) => dispatch(removeItemFromCart(item)),
 });
 export default connect(null, mapDispatchToProps)(CartItem);
