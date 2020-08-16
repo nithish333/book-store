@@ -1,3 +1,26 @@
-.CartItem {
-  display: flex;
+.cartItem {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  /* padding-top: 20px; */
+  padding: 20px 0;
+  width: 60%;
+  margin: auto;
+}
+.sideImg {
+  justify-self: center;
+}
+.cartBookImg {
+  width: 200px;
+  height: 200px;
+}
+.details {
+  border-top: none;
+}
+.cartBookTitle,
+.cartBookQuantity,
+.cartBookPrice {
+  font-size: 20px;
+  font-weight: bold;
 }
