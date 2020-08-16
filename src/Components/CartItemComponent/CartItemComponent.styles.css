@@ -17,10 +17,40 @@
 }
 .details {
   border-top: none;
+  justify-self: center;
 }
 .cartBookTitle,
 .cartBookQuantity,
 .cartBookPrice {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
+}
+.cartBookPrice {
+  margin-top: 20px;
+  /* font-size: 30px; */
+}
+.cartAuthor {
+  margin-top: 20px;
+}
+.cartBookQuantity {
+  display: flex;
+  margin-left: 20px;
+}
+.quantityOverall {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.quantityOverall span {
+  font-size: 20px;
+}
+.quantitySign {
+  border: 1px solid black;
+  padding: 0 7px;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  background-color: #000000;
+  color: #fff;
+  border-radius: 3px;
 }

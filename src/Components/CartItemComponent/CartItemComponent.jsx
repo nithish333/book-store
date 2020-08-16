@@ -1,7 +1,9 @@
 import React from "react";
 import "./CartItemComponent.styles.css";
+import { connect } from "react-redux";
+import { addItemToCart } from "../../redux/cart/cartActions";
 
-const CartItem = ({ cartItem }) => {
+const CartItem = ({ cartItem, addItemToCart }) => {
   const { img, name, price, author, quantity } = cartItem;
   return (
     <div className="CartItem">
@@ -12,14 +14,27 @@ const CartItem = ({ cartItem }) => {
         <div className="details">
           <p className="cartBookTitle">{name}</p>
           <p className="cartBookAuthor">By:{author}</p>
-          <p>
-            Quantity:<span className="cartBookQuantity">{quantity}</span>
-          </p>
-          <p className="cartBookPrice">&#36; {price}</p>
+          <div className="quantityOverall">
+            Quantity:
+            <span className="cartBookQuantity">
+              <div
+                className="quantitySign"
+                onClick={() => addItemToCart(cartItem)}
+              >
+                +
+              </div>
+              <span>{quantity}</span>
+              <div className="quantitySign">-</div>
+            </span>
+          </div>
+          <p className="cartBookPrice">&#36; {(quantity * price).toFixed(2)}</p>
         </div>
       </div>
     </div>
   );
 };
 
-export default CartItem;
+const mapDispatchToProps = (dispatch) => ({
+  addItemToCart: (item) => dispatch(addItemToCart(item)),
+});
+export default connect(null, mapDispatchToProps)(CartItem);

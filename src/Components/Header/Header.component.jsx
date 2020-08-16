@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 import { auth } from "../../Firebase/FIrebase.util";
 import { ReactComponent as CartIcon } from "../../assets/shoppingcart.svg";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { selectCartCount } from "../../redux/cart/cartSelector";
 // import { ReactSVG } from "react-svg";
 
-const Header = ({ currentUser, history }) => {
+const Header = ({ currentUser, history, cartItemsCount }) => {
   // console.log(history);
   return (
     <div className="Header">
@@ -31,7 +33,7 @@ const Header = ({ currentUser, history }) => {
                 className="cartIcon"
                 onClick={() => history.push("/cart")}
               />
-              <span className="itemCount">0</span>
+              <span className="itemCount">{cartItemsCount}</span>
             </div>
             <Link className="profile" to="/profile">
               Profile
@@ -47,4 +49,7 @@ const Header = ({ currentUser, history }) => {
   );
 };
 
-export default withRouter(Header);
+const mapStateToProps = (state) => ({
+  cartItemsCount: selectCartCount(state),
+});
+export default withRouter(connect(mapStateToProps)(Header));
