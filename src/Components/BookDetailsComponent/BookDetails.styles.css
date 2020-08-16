@@ -1,0 +1,48 @@
+.BookDetails {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 80%;
+  margin: 50px auto;
+}
+.aboutBook {
+  font-size: 25px;
+  /* font-weight: bold; */
+  border-bottom: 1px solid #000;
+}
+.aboutName {
+  font-size: 40px;
+  font-weight: bold;
+  /* margin-top: 10px; */
+}
+.about {
+  margin-top: 10px;
+}
+.aboutAuthor,
+.aboutPrice {
+  font-size: 20px;
+  font-weight: bold;
+}
+span {
+  font-size: 15px;
+  font-weight: normal;
+}
+.aboutDes span {
+  font-weight: bold;
+  font-size: 20px;
+}
+.aboutDes {
+  text-align: justify;
+}
+.aboutsideImg img {
+  margin: 100px;
+  justify-self: center;
+}
+.goBack {
+  margin-left: 20px;
+}
+.addItemToCart {
+  padding: 15px;
+  font-size: 18px;
+  /* margin-top: 20px; */
+  margin: 20px auto;
+}

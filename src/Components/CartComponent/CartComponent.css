@@ -24,3 +24,9 @@
   color: #000;
   border: 1px solid #000000;
 }
+.noItems {
+  text-align: center;
+  font-size: 30px;
+  opacity: 0.7;
+  margin-top: 50px;
+}

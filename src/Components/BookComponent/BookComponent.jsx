@@ -3,9 +3,17 @@ import "./BookComponent.css";
 import { connect } from "react-redux";
 import { addItemToCart } from "../../redux/cart/cartActions";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
-const BookComponent = ({ book, addItemToCart, currentUser }) => {
+const BookComponent = ({
+  book,
+  addItemToCart,
+  currentUser,
+  match,
+  history,
+}) => {
   const { img, name, price, author } = book;
+
   return (
     <div className="Book">
       <div className="content">
@@ -13,7 +21,9 @@ const BookComponent = ({ book, addItemToCart, currentUser }) => {
           <img src={img} alt="Book" />
         </div>
         <div className="details">
-          <h3 className="name">{name}</h3>
+          <Link to={`/book/${name}`} className="name">
+            {name}
+          </Link>
           <p className="author">
             <small>By :</small>
             {author}
@@ -39,4 +49,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   addItemToCart: (item) => dispatch(addItemToCart(item)),
 });
-export default connect(mapStateToProps, mapDispatchToProps)(BookComponent);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(BookComponent)
+);

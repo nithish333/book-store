@@ -25,6 +25,9 @@ img {
 .name {
   color: #2c9be5;
   cursor: pointer;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
 }
 .cartButton {
   position: absolute;
