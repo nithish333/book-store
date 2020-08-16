@@ -26,7 +26,7 @@
   font-weight: bold;
 }
 .cartBookPrice {
-  margin-top: 20px;
+  margin-top: 10px;
   /* font-size: 30px; */
 }
 .cartAuthor {
@@ -53,4 +53,10 @@
   background-color: #000000;
   color: #fff;
   border-radius: 3px;
+  outline: none;
+}
+.removeCartItem {
+  margin-top: 10px;
+  background-color: red;
+  width: 70px;
 }

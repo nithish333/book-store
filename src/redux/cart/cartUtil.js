@@ -29,3 +29,7 @@ export const RemoveItemFromCart = (cartItems, itemToRemove) => {
       : { ...cartItem }
   );
 };
+
+export const RemoveTotalItemFromCart = (cartItems, itemToRemove) => {
+  return cartItems.filter((cartItem) => cartItem.id !== itemToRemove.id);
+};

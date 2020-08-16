@@ -9,3 +9,8 @@ export const removeItemFromCart = (item) => ({
   type: CART_ACTION_TYPES.REMOVE_ITEMS_FROM_CART,
   payload: item,
 });
+
+export const removeTotalItemFromCart = (item) => ({
+  type: CART_ACTION_TYPES.REMOVE_TOTALITEM_FROM_CART,
+  payload: item,
+});

@@ -4,9 +4,15 @@ import { connect } from "react-redux";
 import {
   addItemToCart,
   removeItemFromCart,
+  removeTotalItemFromCart,
 } from "../../redux/cart/cartActions";
 
-const CartItem = ({ cartItem, addItemToCart, removeItemFromCart }) => {
+const CartItem = ({
+  cartItem,
+  addItemToCart,
+  removeItemFromCart,
+  removeTotalItemFromCart,
+}) => {
   const { img, name, price, author, quantity } = cartItem;
   return (
     <div className="CartItem">
@@ -35,7 +41,18 @@ const CartItem = ({ cartItem, addItemToCart, removeItemFromCart }) => {
               </div>
             </span>
           </div>
-          <p className="cartBookPrice">&#36; {(quantity * price).toFixed(2)}</p>
+          <p className="cartBookPrice">
+            <span style={{ fontWeight: "normal", fontSize: "20px" }}>
+              Total :
+            </span>{" "}
+            &#36; {(quantity * price).toFixed(2)}
+          </p>
+          <button
+            className="removeCartItem"
+            onClick={() => removeTotalItemFromCart(cartItem)}
+          >
+            Remove
+          </button>
         </div>
       </div>
     </div>
@@ -45,5 +62,6 @@ const CartItem = ({ cartItem, addItemToCart, removeItemFromCart }) => {
 const mapDispatchToProps = (dispatch) => ({
   addItemToCart: (item) => dispatch(addItemToCart(item)),
   removeItemFromCart: (item) => dispatch(removeItemFromCart(item)),
+  removeTotalItemFromCart: (item) => dispatch(removeTotalItemFromCart(item)),
 });
 export default connect(null, mapDispatchToProps)(CartItem);
