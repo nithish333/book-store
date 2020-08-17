@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import setCurrentUser from "./redux/user/userActions";
 import Cart from "./Components/CartComponent/CartComponent";
 import BookDetails from "./Components/BookDetailsComponent/BookDetailsComponent";
+import CheckoutComponent from "./Components/CheckoutComponent/CheckoutComponent";
 // import BookDetails from "./Components/BookDetailsComponent/BookDetailsComponent";
 
 class App extends React.Component {
@@ -46,6 +47,7 @@ class App extends React.Component {
           <Route path="/signup" component={SignUp} />
           <Route exact path="/cart" component={Cart} />
           <Route path="/book/:bookname" component={BookDetails} />
+          <Route path="/checkout" component={CheckoutComponent} />
         </Switch>
         <Contact />
       </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import "./CartItemComponent.styles.css";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   addItemToCart,
   removeItemFromCart,
@@ -21,7 +22,9 @@ const CartItem = ({
           <img src={img} alt="bookimage" className="cartBookImg" />
         </div>
         <div className="details">
-          <p className="cartBookTitle">{name}</p>
+          <Link to={`/book/${name}`} className="cartBookTitle">
+            {name}
+          </Link>
           <p className="cartBookAuthor">By:{author}</p>
           <div className="quantityOverall">
             Quantity:

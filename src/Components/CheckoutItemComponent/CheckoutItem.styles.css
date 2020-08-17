@@ -1,0 +1,17 @@
+.CheckoutItem {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 60%;
+  margin: 50px auto;
+  border-bottom: 1px solid black;
+}
+span {
+  font-size: 20px;
+}
+.checkoutSideImg img {
+  width: 150px;
+  height: 150px;
+}
+.checkoutSideImg {
+  justify-self: center;
+}

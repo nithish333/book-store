@@ -36,6 +36,8 @@ span {
 .aboutsideImg img {
   margin: 100px;
   justify-self: center;
+  border: 1px solid black;
+  height: 60%;
 }
 .goBack {
   margin-left: 20px;
