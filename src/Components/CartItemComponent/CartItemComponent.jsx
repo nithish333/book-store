@@ -19,7 +19,7 @@ const CartItem = ({
     <div className="CartItem">
       <div className="cartItem">
         <div className="sideImg">
-          <img src={img} alt="bookimage" className="cartBookImg" />
+          <img src={img} alt={name} className="cartBookImg" />
         </div>
         <div className="details">
           <Link to={`/book/${name}`} className="cartBookTitle">
